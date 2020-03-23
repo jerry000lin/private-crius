@@ -1,14 +1,19 @@
+const path = require("path");
+const antdVariable = require("./config/ant-design-variable");
 module.exports = {
   css: {
     loaderOptions: {
       less: {
-        modifyVars: {
-          "primary-color": "#1DA57A",
-          "link-color": "#1DA57A",
-          "border-radius-base": "2px"
-        },
+        modifyVars: antdVariable,
         javascriptEnabled: true
       }
+    }
+  },
+
+  pluginOptions: {
+    "style-resources-loader": {
+      preProcessor: "less",
+      patterns: [path.resolve(__dirname, "./config/themes.less")]
     }
   }
 };
